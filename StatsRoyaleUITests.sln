@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "Framework\Framework.csproj", "{7757DFF9-313E-4ECD-B2FC-C3AFABAC5813}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Royale", "NUnit\Royale.csproj", "{477558B8-4EBE-497D-9F1F-20412B516CD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Royale.Tests", "NUnit.Tests\Royale.Tests.csproj", "{B0429861-12A8-4F08-93E2-755BFD396C9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7757DFF9-313E-4ECD-B2FC-C3AFABAC5813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7757DFF9-313E-4ECD-B2FC-C3AFABAC5813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7757DFF9-313E-4ECD-B2FC-C3AFABAC5813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7757DFF9-313E-4ECD-B2FC-C3AFABAC5813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477558B8-4EBE-497D-9F1F-20412B516CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477558B8-4EBE-497D-9F1F-20412B516CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477558B8-4EBE-497D-9F1F-20412B516CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477558B8-4EBE-497D-9F1F-20412B516CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0429861-12A8-4F08-93E2-755BFD396C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0429861-12A8-4F08-93E2-755BFD396C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0429861-12A8-4F08-93E2-755BFD396C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0429861-12A8-4F08-93E2-755BFD396C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2E47DC5-DE13-4F00-8380-202E155D7CBE}
+	EndGlobalSection
+EndGlobal
