@@ -1,3 +1,6 @@
+using Framework.Models;
+using Framework.Selenium;
+using Framework.Services;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -8,52 +11,47 @@ namespace NUnit.Tests
 {
     public class CardTests
     {
-        IWebDriver driver;
 
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver(Path.GetFullPath(@"../../../"))
-            {
-                Url = "https://statsroyale.com"
-            };
+            Driver.Init();
+            Pages.Init();
+            Driver.Current.Url = "https://statsroyale.com";
         }
 
         [TearDown]
         public void TearDown()
         {
-            driver.Quit();
+            Driver.Current.Quit();
         }
 
         [Test]
-        public void ShouldDisplayIceSpiritCardOnCardsList()
+        public void ShouldDisplayIceSpiritCard()
         {
-            // arrange
-            var cardsPage = new CardsPage(driver);
-
-            //act 
-            var iceSpirit = cardsPage.Goto().GetCardByName("Ice Spirit");
+            // arrange & act
+            var iceSpirit = Pages.Cards.Goto().GetCardByName("Ice Spirit");
 
             // assert
             Assert.That(iceSpirit.Displayed);
         }
-         
-        [Test]
-        public void ShouldDisplayCorrectIceSpiritCardStats()
+
+        static string[] cardNames = { "Ice Spirit", "Mirror" };
+        [Test, Category("Cards")]
+        [TestCaseSource("cardNames")]
+        [Parallelizable(ParallelScope.Children)]
+        public void ShouldDisplayCardStats(string cardName)
         {
             // arrange & act      
-            new CardsPage(driver).Goto().GetCardByName("Ice Spirit").Click();
-            var cardDetails = new CardDetailsPage(driver);
-
-            var (category, arena) = cardDetails.GetCardCategory();
-            var cardName = cardDetails.Map.CardName.Text;
-            var cardRarity = cardDetails.Map.CardCategory.Text;
+            Pages.Cards.Goto().GetCardByName(cardName).Click();
+            var cardOnPage = Pages.CardDetails.GetBaseCard();
+            var card = new InMemoryCardService().GetCardByName(cardName);
 
             // assert 
-            Assert.That(cardName, Is.EqualTo("Ice Spirit"));
-            Assert.That(category, Is.EqualTo("Troop"));
-            Assert.That(arena, Is.EqualTo("Arena 8"));
-            Assert.That(cardRarity, Is.EqualTo("Common"));
+            Assert.That(cardOnPage.Name, Is.EqualTo(card.Name));
+            Assert.That(cardOnPage.Type, Is.EqualTo(card.Type));
+            Assert.That(cardOnPage.Arena, Is.EqualTo(card.Arena));
+            Assert.That(cardOnPage.Rarity, Is.EqualTo(card.Rarity));
         }
     }
 }
