@@ -17,7 +17,7 @@ namespace NUnit.Tests
         {
             Driver.Init();
             Pages.Init();
-            Driver.Current.Url = "https://statsroyale.com";
+            Driver.Goto("https://statsroyale.com");
         }
 
         [TearDown]
