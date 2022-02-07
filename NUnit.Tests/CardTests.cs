@@ -5,6 +5,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Royale.Pages;
+using System.Collections.Generic;
 using System.IO;
 
 namespace NUnit.Tests
@@ -26,26 +27,28 @@ namespace NUnit.Tests
             Driver.Current.Quit();
         }
 
-        [Test]
-        public void ShouldDisplayIceSpiritCard()
+        static IList<Card> apiCards = new ApiCardService().GetAllCards();
+
+        [Test, Category("Cards")]
+        [TestCaseSource("apiCards")]
+        [Parallelizable(ParallelScope.Children)]
+        public void ShouldDisplayCardOnCardsPage(Card card)
         {
             // arrange & act
-            var iceSpirit = Pages.Cards.Goto().GetCardByName("Ice Spirit");
+            var cardOnPage = Pages.Cards.Goto().GetCardByName(card.Name);
 
             // assert
-            Assert.That(iceSpirit.Displayed);
+            Assert.That(cardOnPage.Displayed);
         }
 
-        static string[] cardNames = { "Ice Spirit", "Mirror" };
         [Test, Category("Cards")]
-        [TestCaseSource("cardNames")]
+        [TestCaseSource("apiCards")]
         [Parallelizable(ParallelScope.Children)]
-        public void ShouldDisplayCardStats(string cardName)
+        public void ShouldDisplayCardStats(Card card)
         {
             // arrange & act      
-            Pages.Cards.Goto().GetCardByName(cardName).Click();
+            Pages.Cards.Goto().GetCardByName(card.Name).Click();
             var cardOnPage = Pages.CardDetails.GetBaseCard();
-            var card = new InMemoryCardService().GetCardByName(cardName);
 
             // assert 
             Assert.That(cardOnPage.Name, Is.EqualTo(card.Name));

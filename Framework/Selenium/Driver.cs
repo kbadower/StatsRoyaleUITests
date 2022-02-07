@@ -15,7 +15,9 @@ namespace Framework.Selenium
 
         public static void Init()
         {
-            _driver = new ChromeDriver(Path.GetFullPath(@"../../../"));
+            var options = new ChromeOptions();
+            options.AddArgument("headless");
+            _driver = new ChromeDriver(Path.GetFullPath(@"../../../"), options);
         }
 
         public static IWebDriver Current => _driver ?? throw new NullReferenceException("_driver is null.");
