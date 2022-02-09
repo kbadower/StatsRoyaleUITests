@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using Royale.Pages;
 
-
 namespace Nunit.Tests
 {
     public class CopyDeckTests
@@ -24,9 +23,6 @@ namespace Nunit.Tests
         [Test]
         public void ShouldCopyDeck()
         {
-
-            // Arrange
-
             // Act
             Pages.DeckBuilder.Goto();
             Driver.Wait.Until(drvr => Pages.DeckBuilder.Map.AddCardsManuallyLink.Displayed);

@@ -5,7 +5,6 @@ using NUnit.Framework;
 using Royale.Pages;
 using System.Collections.Generic;
 
-
 namespace NUnit.Tests
 {
     public class CardTests
