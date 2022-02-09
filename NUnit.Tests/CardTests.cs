@@ -2,11 +2,8 @@ using Framework.Models;
 using Framework.Selenium;
 using Framework.Services;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using Royale.Pages;
 using System.Collections.Generic;
-using System.IO;
 
 namespace NUnit.Tests
 {
