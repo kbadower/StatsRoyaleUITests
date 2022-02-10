@@ -20,20 +20,41 @@ namespace Nunit.Tests
             Driver.Current.Quit();
         }
 
-        [Test]
+        [Test, Category("CopyDeck")]
         public void ShouldCopyDeck()
         {
             // Act
-            Pages.DeckBuilder.Goto();
-            Driver.Wait.Until(drvr => Pages.DeckBuilder.Map.AddCardsManuallyLink.Displayed);
-            Pages.DeckBuilder.AddCardsManually();
-            Driver.Wait.Until(drvr => Pages.DeckBuilder.Map.CopyDeckIcon.Displayed);
+            Pages.DeckBuilder.Goto().AddCardsManually();
             Pages.DeckBuilder.CopySuggestedDeck();
             Pages.CopyDeck.Yes();
 
             // Assert
-            Driver.Wait.Until(drvr => Pages.CopyDeck.Map.DeckCopiedMessage.Displayed);
             Assert.That(Pages.CopyDeck.Map.DeckCopiedMessage, Is.Not.Empty);
+        }
+
+        [Test, Category("CopyDeck")]
+        public void ShouldOpenAppStore()
+        {
+            // Act
+            Pages.DeckBuilder.Goto().AddCardsManually();
+            Pages.DeckBuilder.CopySuggestedDeck();
+            Pages.CopyDeck.No().GoToDownloadPage();
+            Pages.Download.OpenAppStore();
+
+            // Assert - constraint model
+            Assert.That(Driver.Title, Is.EqualTo("Clash Royale on the App Store"));
+        }
+
+        [Test, Category("CopyDeck")]
+        public void ShouldOpenGooglePlay()
+        {
+            Pages.DeckBuilder.Goto().AddCardsManually();
+            Pages.DeckBuilder.CopySuggestedDeck();
+            Pages.CopyDeck.No().GoToDownloadPage();
+            Pages.Download.OpenGooglePlay();
+
+            // Assert - classic model
+            Assert.AreEqual("Clash Royale - Apps on Google Play", Driver.Title);
         }
     }
 }

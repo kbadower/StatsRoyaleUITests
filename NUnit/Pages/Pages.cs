@@ -17,12 +17,16 @@ namespace Royale.Pages
         [ThreadStatic]
         public static CopyDeckPage CopyDeck;
 
+        [ThreadStatic]
+        public static DownloadPage Download;
+
         public static void Init()
         {
             Cards = new CardsPage();
             CardDetails = new CardDetailsPage();
             DeckBuilder = new DeckBuilderPage();
             CopyDeck = new CopyDeckPage();
+            Download = new DownloadPage();
         }
     }
 }
