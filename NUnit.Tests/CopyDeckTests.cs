@@ -20,6 +20,7 @@ namespace Nunit.Tests
             Driver.Current.Quit();
         }
 
+
         [Test, Category("CopyDeck")]
         public void ShouldCopyDeck()
         {

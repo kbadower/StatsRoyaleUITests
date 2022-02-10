@@ -1,5 +1,4 @@
-﻿
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -13,11 +12,15 @@ namespace Framework.Selenium
         [ThreadStatic]
         private static IWebDriver _driver;
 
+        [ThreadStatic]
+        public static Wait Wait;
+
         public static void Init()
         {
             var options = new ChromeOptions();
-            options.AddArgument("headless");
+            // options.AddArgument("headless");
             _driver = new ChromeDriver(Path.GetFullPath(@"../../../"), options);
+            Wait = new Wait(10);
         }
 
         public static IWebDriver Current => _driver ?? throw new NullReferenceException("_driver is null.");

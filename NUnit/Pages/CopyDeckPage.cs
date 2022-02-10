@@ -16,7 +16,7 @@ namespace Royale.Pages
         {
             Map = new CopyDeckPageMap();
         }
-
+      
         public CopyDeckPage Yes()
         {
             Map.YesButton.Click();
@@ -47,7 +47,7 @@ namespace Royale.Pages
     public class CopyDeckPageMap
     {
         public IWebElement YesButton => Driver.FindElement(By.Id("button-open"));
-
+      
         public IWebElement NoButton => Driver.FindElement(By.Id("not-installed"));
 
         public IWebElement DeckCopiedMessage => Driver.FindElement(By.CssSelector(".notes-active"));
