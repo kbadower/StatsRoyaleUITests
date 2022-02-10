@@ -16,12 +16,14 @@ namespace Royale.Pages
         public DeckBuilderPage Goto()
         {
             HeaderNav.Map.DeckBuilderLink.Click();
+            Driver.Wait.Until(drvr => Map.AddCardsManuallyLink.Displayed);
             return this;
         }
 
         public void AddCardsManually()
         {
             Map.AddCardsManuallyLink.Click();
+            Driver.Wait.Until(drvr => Map.CopyDeckIcon.Displayed);
         }
 
         public void CopySuggestedDeck()
