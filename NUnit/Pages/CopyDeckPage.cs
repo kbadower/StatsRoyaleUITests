@@ -1,4 +1,5 @@
-﻿using Framework.Selenium;
+﻿using Framework;
+using Framework.Selenium;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Royale.Pages
 
         public CopyDeckPage Yes()
         {
+            FW.Log.Step("Clicking Yes.");
             Map.YesButton.Click();
             Driver.Wait.Until(drvr => Map.DeckCopiedMessage.Displayed);
             return this;
@@ -26,6 +28,7 @@ namespace Royale.Pages
 
         public CopyDeckPage No()
         {
+            FW.Log.Step("Clicking No.");
             Map.NoButton.Click();
             Driver.Wait.Until(drvr => Map.DownloadSection.Displayed);
             AcceptCookies();
@@ -34,6 +37,7 @@ namespace Royale.Pages
 
         public void GoToDownloadPage()
         {
+            FW.Log.Step("Clicking Download Page link.");
             Map.DownloadPageLink.Click();
         }
 
