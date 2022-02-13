@@ -1,4 +1,5 @@
-﻿using Framework.Selenium;
+﻿using Framework;
+using Framework.Selenium;
 using OpenQA.Selenium;
 
 namespace Royale.Pages
@@ -15,17 +16,20 @@ namespace Royale.Pages
         public void OpenAppStore()
         {
             AcceptCookies();
+            FW.Log.Step("Opening Google Play.");
             Map.AppStoreButton.Click();
         }
 
         public void OpenGooglePlay()
         {
             AcceptCookies();
+            FW.Log.Step("Opening Google Play.");
             Map.GooglePlayButton.Click();
         }
 
         public void AcceptCookies()
         {
+            FW.Log.Step("Accepting cookies.");
             Map.AcceptCookiesButton.Click();
             Driver.Wait.Until(drvr => !Map.AcceptCookiesButton.Displayed);
         }

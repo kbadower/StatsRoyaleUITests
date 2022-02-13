@@ -1,4 +1,5 @@
-﻿using Framework.Selenium;
+﻿using Framework;
+using Framework.Selenium;
 using OpenQA.Selenium;
 
 namespace Royale.Pages
@@ -23,6 +24,7 @@ namespace Royale.Pages
 
         public CardsPage Goto()
         {
+            FW.Log.Step("Clicking Cards Page.");
             HeaderNav.GoToCardsPage();
             return this;
         }

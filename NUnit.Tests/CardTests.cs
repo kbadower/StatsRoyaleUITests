@@ -1,3 +1,4 @@
+using Framework;
 using Framework.Models;
 using Framework.Selenium;
 using Framework.Services;
@@ -9,10 +10,17 @@ namespace NUnit.Tests
 {
     public class CardTests
     {
+     
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            FW.CreateTestResultsDirectory();
+        }
 
         [SetUp]
         public void Setup()
         {
+            FW.SetLogger();
             Driver.Init();
             Pages.Init();
             Driver.Goto("https://statsroyale.com");
@@ -21,9 +29,10 @@ namespace NUnit.Tests
         [TearDown]
         public void TearDown()
         {
-            Driver.Current.Quit();
+            Driver.Quit();
         }
 
+        // alternative TestCaseSource
         static IList<Card> apiCards = new ApiCardService().GetAllCards();
 
         [Test, Category("Cards")]

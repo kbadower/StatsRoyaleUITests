@@ -1,4 +1,5 @@
-﻿using Framework.Selenium;
+﻿using Framework;
+using Framework.Selenium;
 using NUnit.Framework;
 using Royale.Pages;
 
@@ -6,9 +7,16 @@ namespace Nunit.Tests
 {
     public class CopyDeckTests
     {
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            FW.CreateTestResultsDirectory();
+        }
+
         [SetUp]
         public void Setup()
         {
+            FW.SetLogger();
             Driver.Init();
             Pages.Init();
             Driver.Goto("https://statsroyale.com");
@@ -17,7 +25,7 @@ namespace Nunit.Tests
         [TearDown]
         public void TearDown()
         {
-            Driver.Current.Quit();
+            Driver.Quit();
         }
 
         [Test, Category("CopyDeck")]
