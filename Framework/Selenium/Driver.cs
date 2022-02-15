@@ -17,10 +17,9 @@ namespace Framework.Selenium
 
         public static void Init()
         {
-            FW.Log.Info("Browser: Chrome");
             var options = new ChromeOptions();
             // options.AddArgument("headless");
-            _driver = new ChromeDriver(Path.GetFullPath(@"../../../"), options);
+            _driver = DriverFactory.Build(FW.Config.Driver.Browser);
             Wait = new Wait(10);
         }
 

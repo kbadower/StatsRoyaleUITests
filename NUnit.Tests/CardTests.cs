@@ -14,6 +14,7 @@ namespace NUnit.Tests
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
+            FW.SetConfig();
             FW.CreateTestResultsDirectory();
         }
 
@@ -23,7 +24,7 @@ namespace NUnit.Tests
             FW.SetLogger();
             Driver.Init();
             Pages.Init();
-            Driver.Goto("https://statsroyale.com");
+            Driver.Goto(FW.Config.Test.Url);
         }
 
         [TearDown]
