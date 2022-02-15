@@ -13,7 +13,7 @@ namespace Royale.Pages
             Map = new CardsPageMap();
         }
 
-        public IWebElement GetCardByName(string cardName)
+        public Element GetCardByName(string cardName)
         {
             if(cardName.Contains(" "))
             {
@@ -24,7 +24,6 @@ namespace Royale.Pages
 
         public CardsPage Goto()
         {
-            FW.Log.Step("Clicking Cards Page.");
             HeaderNav.GoToCardsPage();
             return this;
         }
@@ -33,7 +32,7 @@ namespace Royale.Pages
 
     public class CardsPageMap
     {
-        public IWebElement Card(string name) => Driver.FindElement(By.CssSelector($"a[href*='{name}']"));
+        public Element Card(string name) => Driver.FindElement(By.CssSelector($"a[href*='{name}']"), $"Card: {name}");
     }
 }
 

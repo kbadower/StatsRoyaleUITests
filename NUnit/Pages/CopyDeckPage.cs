@@ -20,7 +20,6 @@ namespace Royale.Pages
 
         public CopyDeckPage Yes()
         {
-            FW.Log.Step("Clicking Yes.");
             Map.YesButton.Click();
             Driver.Wait.Until(drvr => Map.DeckCopiedMessage.Displayed);
             return this;
@@ -28,7 +27,6 @@ namespace Royale.Pages
 
         public CopyDeckPage No()
         {
-            FW.Log.Step("Clicking No.");
             Map.NoButton.Click();
             Driver.Wait.Until(drvr => Map.DownloadSection.Displayed);
             AcceptCookies();
@@ -37,7 +35,6 @@ namespace Royale.Pages
 
         public void GoToDownloadPage()
         {
-            FW.Log.Step("Clicking Download Page link.");
             Map.DownloadPageLink.Click();
         }
 
@@ -50,16 +47,16 @@ namespace Royale.Pages
 
     public class CopyDeckPageMap
     {
-        public IWebElement YesButton => Driver.FindElement(By.Id("button-open"));
+        public Element YesButton => Driver.FindElement(By.Id("button-open"), "Yes");
 
-        public IWebElement NoButton => Driver.FindElement(By.Id("not-installed"));
+        public Element NoButton => Driver.FindElement(By.Id("not-installed"), "No");
 
-        public IWebElement DeckCopiedMessage => Driver.FindElement(By.CssSelector(".notes-active"));
+        public Element DeckCopiedMessage => Driver.FindElement(By.CssSelector(".notes-active"), "Deck Copied Message");
 
-        public IWebElement DownloadSection => Driver.FindElement(By.Id("app-download"));
+        public Element DownloadSection => Driver.FindElement(By.Id("app-download"), "Download Section");
 
-        public IWebElement DownloadPageLink => Driver.FindElement(By.XPath("//a[text()='App Store']"));
+        public Element DownloadPageLink => Driver.FindElement(By.XPath("//a[text()='App Store']"), "Download Page Link");
 
-        public IWebElement AcceptCookiesButton => Driver.FindElement(By.CssSelector("a.cc-btn.cc-dismiss"));
+        public Element AcceptCookiesButton => Driver.FindElement(By.CssSelector("a.cc-btn.cc-dismiss"), "Accept Cookies Button");
     }
 }

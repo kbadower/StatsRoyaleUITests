@@ -16,20 +16,17 @@ namespace Royale.Pages
         public void OpenAppStore()
         {
             AcceptCookies();
-            FW.Log.Step("Opening Google Play.");
             Map.AppStoreButton.Click();
         }
 
         public void OpenGooglePlay()
         {
             AcceptCookies();
-            FW.Log.Step("Opening Google Play.");
             Map.GooglePlayButton.Click();
         }
 
         public void AcceptCookies()
         {
-            FW.Log.Step("Accepting cookies.");
             Map.AcceptCookiesButton.Click();
             Driver.Wait.Until(drvr => !Map.AcceptCookiesButton.Displayed);
         }
@@ -37,11 +34,11 @@ namespace Royale.Pages
 
     public class DownloadPageMap
     {
-        public IWebElement AppStoreButton => Driver.FindElement(By.XPath("//a[text()='App Store']"));
+        public Element AppStoreButton => Driver.FindElement(By.XPath("//a[text()='App Store']"), "App Store Button");
 
-        public IWebElement GooglePlayButton => Driver.FindElement(By.XPath("//a[text()='Google Play']"));
+        public Element GooglePlayButton => Driver.FindElement(By.XPath("//a[text()='Google Play']"), "Google Play Button");
 
-        public IWebElement AcceptCookiesButton => Driver.FindElement(By.CssSelector("a.cc-btn.cc-dismiss"));
+        public Element AcceptCookiesButton => Driver.FindElement(By.CssSelector("a.cc-btn.cc-dismiss"), "Accept Cookies Button");
 
     }
 }
