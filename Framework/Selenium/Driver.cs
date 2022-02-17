@@ -38,6 +38,13 @@ namespace Framework.Selenium
             Current.Navigate().GoToUrl(url);
         }
 
+        public static void TakeScreenshot(string imageName)
+        {
+            var ss = ((ITakesScreenshot)Current).GetScreenshot();
+            var ssFilename = Path.Combine(FW.CurrentTestDirectory.FullName, imageName);
+            ss.SaveAsFile($"{ssFilename}.png", ScreenshotImageFormat.Png);
+        }
+
         public static void Quit()
         {
             FW.Log.Info("Browser is closing.");
