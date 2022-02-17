@@ -2,32 +2,12 @@
 using Framework.Selenium;
 using NUnit.Framework;
 using Royale.Pages;
+using Royale.Tests.Base;
 
 namespace Nunit.Tests
 {
-    public class CopyDeckTests
+    public class CopyDeckTests : TestBase
     {
-        [OneTimeSetUp]
-        public void OneTimeSetup()
-        {
-            FW.SetConfig();
-            FW.CreateTestResultsDirectory();
-        }
-
-        [SetUp]
-        public void Setup()
-        {
-            FW.SetLogger();
-            Driver.Init();
-            Pages.Init();
-            Driver.Goto(FW.Config.Test.Url);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Driver.Quit();
-        }
 
         [Test, Category("CopyDeck")]
         public void ShouldCopyDeck()
