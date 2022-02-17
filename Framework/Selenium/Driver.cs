@@ -1,8 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 
 namespace Framework.Selenium
@@ -18,7 +16,8 @@ namespace Framework.Selenium
         public static void Init()
         {
             var options = new ChromeOptions();
-            // options.AddArgument("headless");
+            if (FW.Config.Driver.Headless == "true") options.AddArgument("headless");
+            options.AddArgument("--start-maximized");
             _driver = DriverFactory.Build(FW.Config.Driver.Browser);
             Wait = new Wait(10);
         }

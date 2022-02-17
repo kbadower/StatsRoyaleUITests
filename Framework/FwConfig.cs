@@ -10,6 +10,8 @@
     public class DriverSettings
     {
         public string Browser { get; set; }
+
+        public string Headless { get; set; }
     }
 
     public class TestSettings

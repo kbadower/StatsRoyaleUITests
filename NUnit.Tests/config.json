@@ -1,6 +1,7 @@
 ﻿{
   "driver": {
-    "browser": "chrome"
+    "browser": "chrome",
+    "headless": "true"
   },
   "test":{
     "url": "https://statsroyale.com"
